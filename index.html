@@ -205,9 +205,12 @@ function getInputAmount(seatclass)
 //function for alert
 function foralert() {
     
-            var result=document.getElementById("grand-Total").innerText;
+            var totalPrice=document.getElementById("grand-Total").innerText;
+            var totalSeatFirstClass=document.getElementById("firstclass-input").value;
+            var totalSeatEconomy=document.getElementById("eco-input").value;
             if (confirm("By clicking on the,Confirm Reservation / Proceed to Pay box below, I have read, acknowledged and agreed to the Terms of Use, Privacy Policy and Cancellation Policy of Cruise Queen.\n\nNote: If you press Ok ,you will see your Total Payable Amount again!")) {
-            alert("Total Amount Payable: "+result +"\n\nPlease Confirm."); 
+            alert("Total Amount Payable(+VAT) : "+totalPrice+"\n\nSeat-Count :- "+
+            "\n\nFirst-Class ($150) : "+totalSeatFirstClass+"\nEconomy-Class ($100) : "+totalSeatEconomy+"\n\nPlease Confirm."); 
             document.write ("Thank you for buying tickets from us.You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.");
             document.body.style.color='blue'
             document.body.style.fontSize="50px"
