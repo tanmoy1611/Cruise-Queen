@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="firstclass-input" class="inp-style inp-width" type="number" name="" value="0">
+                </div>
+                <div class="plus-minus-btn-1">
+                    <button class="plus-minus-btn-2"><span id="plus-id-for-firstClass">+</span>
+                    </button> 
+                    <button class="plus-minus-btn-2"><span id="minus-id-for-firstClass">-</span></button>  
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="eco-input" class="inp-style inp-width" type="number" name="" value="0">
+                </div>
+                <div class="plus-minus-btn-1">
+                   <button class="plus-minus-btn-2" ><span id="plus-id-for-eco">+</span>
+                   </button> 
+                   <button class="plus-minus-btn-2"><span id="minus-id-for-eco">-</span></button>  
+                   <!-- <p> <span>+</span> <span>-</span> </p> -->
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="sub-Total">500</span></p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="tax-amount">50</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="grand-Total">550</span></p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="foralert()" id="book-Now" class="btn-style">Book Now</button>
+            
+        </div>     
+    </main>
+
+    <script>
+        //first-class
+        const plusforfirstClassBtn=document.getElementById('plus-id-for-firstClass');
+        plusforfirstClassBtn.style.cursor='pointer'
+        
+        plusforfirstClassBtn.addEventListener('click',function(){
+
+        handleSeatClassChange("firstclass-input",true);
+
+        });
+        const minusforfirstClassBtn=document.getElementById('minus-id-for-firstClass');
+        minusforfirstClassBtn.style.cursor='pointer'
+        minusforfirstClassBtn.addEventListener('click',function(){
+
+        handleSeatClassChange("firstclass-input",false);
+
+        });
+
+        //eco
+       const plusforecoClassBtn=document.getElementById('plus-id-for-eco');
+       plusforecoClassBtn.style.cursor='pointer';
+       plusforecoClassBtn.addEventListener('click',function(){
+
+       handleSeatClassChange("eco-input",true);
+
+       });
+
+       const minusforecoClassBtn=document.getElementById('minus-id-for-eco');
+       minusforecoClassBtn.style.cursor='pointer';
+       minusforecoClassBtn.addEventListener('click',function(){
+
+       handleSeatClassChange("eco-input",false);
+
+       });
+
+ //function for handle
+       function handleSeatClassChange(seatclass,isIncrease){
+       const seatclassInput=document.getElementById(seatclass)
+       const seatclassInputNumber=parseInt(seatclassInput.value);
+       var seatclassInputNumberNew=0
+       if(isIncrease==true)
+       {
+            seatclassInputNumberNew=seatclassInputNumber+1; 
+       }
+       else if(isIncrease==false&&seatclassInputNumber>0)
+       {
+         seatclassInputNumberNew=seatclassInputNumber-1;
+       }
+      
+       seatclassInput.value=seatclassInputNumberNew;
+       
+       var seatclassTicketTotalPrice=0;
+       if(seatclass=="firstclass-input"){
+           seatclassTicketTotalPrice=seatclassInputNumberNew*150;
+       console.log(seatclassTicketTotalPrice);
+       }
+       
+    else if(seatclass=="eco-input")
+    {
+        seatclassTicketTotalPrice=seatclassInputNumberNew*100;
+       console.log(seatclassTicketTotalPrice);
+    }
+    calculateTotal();
+}
+
+//function for Total
+function calculateTotal()
+{
+         const firstClassCount=getInputAmount("firstclass-input");
+         const ecoClassCount=getInputAmount("eco-input");
+         const totalPrice=firstClassCount*150+ecoClassCount*100;
+         document.getElementById("sub-Total").innerText=totalPrice;
+         const tax=Math.round(totalPrice*0.1);
+         document.getElementById('tax-amount').innerText=tax;
+
+         const grandTotal=totalPrice+tax;
+         document.getElementById("grand-Total").innerText=grandTotal;
+}
+
+//function for Total
+function getInputAmount(seatclass)
+{
+         const ticketTotalPrice=document.getElementById(seatclass);
+         const ticketTotalPriceNumber=parseInt(ticketTotalPrice.value);
+         return ticketTotalPriceNumber;
+}
+
+//function for alert
+function foralert() {
+    
+            var result=document.getElementById("grand-Total").innerText;
+            if (confirm("By clicking on the,Confirm Reservation / Proceed to Pay box below, I have read, acknowledged and agreed to the Terms of Use, Privacy Policy and Cancellation Policy of Cruise Queen.\n\nNote: If you press Ok ,you will see your Total Payable Amount again!")) {
+            alert("Total Amount Payable: "+result +"\n\nPlease Confirm."); 
+            document.write ("Thank you for buying tickets from us.You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.");
+            document.body.style.color='blue'
+            document.body.style.fontSize="50px"
+            document.body.style.marginTop="250px"
+        } 
+        else {
+            document.write ("Thank You for Visiting My Website");
+            document.body.style.textAlign="center";
+            document.body.style.color='lightsalmon'
+            document.body.style.fontSize="50px"
+            document.body.style.marginTop="300px"
+            }
+                 }
+           
+    </script>
+    <!--Thank You-->
+</body>
+
+</html>
